@@ -123,6 +123,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &30802046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30802047}
+  - component: {fileID: 30802048}
+  m_Layer: 0
+  m_Name: AllCardsData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &30802047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30802046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1425953902}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &30802048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30802046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1642b05e476ea4094fcc792f21f06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardsList:
+  - Base: {fileID: 6163319160126195810, guid: 19d0729e22162104d8bc0261536c8f64, type: 3}
+    Upgrade: {fileID: 6163319160126195810, guid: 7e02742534eda4f4ba8e03974195ddcc, type: 3}
+  - Base: {fileID: 1095687284646420301, guid: 6015fb145666cef4f837af9704e674c9, type: 3}
+    Upgrade: {fileID: 1095687284646420301, guid: 661772d6e661b6542899d22d961989fc, type: 3}
+  - Base: {fileID: 4392547421896298430, guid: 794355d8405bf4f499c53eb083dcb9b6, type: 3}
+    Upgrade: {fileID: 4392547421896298430, guid: 9a81d839a93b86d49bea417e2889b331, type: 3}
 --- !u!224 &267358796 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4147004509023474506, guid: 1a8b11a89f45d7f4f96834828492593d, type: 3}
@@ -243,6 +294,60 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &929095430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 929095431}
+  - component: {fileID: 929095432}
+  m_Layer: 0
+  m_Name: CurrentRunManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &929095431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929095430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1425953902}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &929095432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929095430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab69598aa688af74ebdc5b0f19806579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerDeck:
+  - bolt
+  - bolt
+  - bolt
+  - fire
+  - fire
+  - fire
+  - ice
+  - ice
+  - ice
 --- !u!1 &1174482456
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +529,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1721447800}
+  - {fileID: 30802047}
+  - {fileID: 929095431}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -483,7 +590,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHandParent: {fileID: 1947562073}
   heldCardParent: {fileID: 35289479961162662}
+  drawStartPosition: {fileID: 35289479961162663}
+  discardPosition: {fileID: 35289479961162664}
   Mana: 20
+  allCardsData: {fileID: 30802048}
 --- !u!224 &1947562073 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 306613788464964088, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
@@ -733,6 +843,16 @@ PrefabInstance:
 --- !u!224 &35289479961162662 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6550862699130684227, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
+  m_PrefabInstance: {fileID: 35289479961162661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &35289479961162663 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 500678930319299894, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
+  m_PrefabInstance: {fileID: 35289479961162661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &35289479961162664 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6023032043049954848, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
   m_PrefabInstance: {fileID: 35289479961162661}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &432432933008661667

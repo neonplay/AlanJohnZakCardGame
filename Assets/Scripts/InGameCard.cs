@@ -5,7 +5,9 @@ using UnityEngine.EventSystems;
 
 public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerMoveHandler, IPointerUpHandler
 {
-	public int ManaCost;
+	public string CardName;
+	public CardStats BaseStats;
+	public CardStats CurrentStats { get; set; }
 
 	protected Vector3 HandPosition;
 	protected Quaternion HandRotation;
@@ -21,13 +23,21 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
 	CardPlayingManager cardPlayingManager;
 
-	private void Start()
-	{
+    private void Awake()
+    {
 		cardPlayingManager = FindObjectOfType<CardPlayingManager>();
+    }
 
-		ManaCost = transform.GetSiblingIndex() * 10;
-
+    private void Start()
+	{
 		rectTransform = GetComponent<RectTransform>();
+		UpdateCurrentStats();
+	}
+
+	private void UpdateCurrentStats()
+    {
+		CurrentStats = new CardStats();
+		CurrentStats.Attack = BaseStats.Attack + cardPlayingManager.BuffsAndDebuffs.Strength;
 	}
 
 	private void Update()
@@ -80,7 +90,6 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 			progress += Time.deltaTime * 8;
 			yield return new WaitForEndOfFrame();
 			transform.localScale = Vector3.Lerp(enlargedScale, baseScale, progress);
-
 		}
 	}
 
@@ -161,4 +170,30 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 	}
 
     #endregion
+
+	public void SendToDiscard(Transform discardPosition)
+    {
+		IEnumerator MoveToDiscard()
+        {
+			float progress = 0;
+			transform.parent = discardPosition;
+			var startPos = rectTransform.localPosition;
+
+			while (progress < 1)
+			{
+				progress += Time.deltaTime * 5;
+				yield return new WaitForEndOfFrame();
+				rectTransform.localPosition = Vector3.Lerp(startPos, Vector3.zero, progress);
+			}
+		}
+
+		StartCoroutine(MoveToDiscard());
+    }
+}
+
+[System.Serializable]
+public class CardStats
+{
+	public int Attack;
+	public int ManaCost;
 }
