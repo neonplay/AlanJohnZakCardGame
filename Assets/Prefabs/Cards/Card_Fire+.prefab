@@ -92,8 +92,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardName: fire+
   BaseStats:
-    Attack: 5
+    Attack: 10
     ManaCost: 5
+  isUpgraded: 1
 --- !u!1 &8497172529460598348
 GameObject:
   m_ObjectHideFlags: 0

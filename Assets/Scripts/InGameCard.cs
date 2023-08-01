@@ -23,7 +23,11 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
 	CardPlayingManager cardPlayingManager;
 
-	public bool isReward;
+	public bool isReward { get; set; }
+
+	public bool isUpgraded;
+	public bool upgrading { get; set; }
+	public int deckIndex { get; set; }
 
     private void Awake()
     {
@@ -142,6 +146,12 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 			return;
         }
 
+		if(upgrading)
+        {
+			FindObjectOfType<UpgradesManager>().ShowUpgradeConfirm(this);
+			return;
+        }
+
 		if(pressed && !isDragging)
         {
 
@@ -150,9 +160,8 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
-		if (isReward)
+		if (isReward || upgrading)
 		{
-
 			return;
 		}
 		pressed = true;
@@ -161,9 +170,8 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
 	public void OnPointerMove(PointerEventData eventData)
     {
-		if (isReward)
+		if (isReward || upgrading)
 		{
-
 			return;
 		}
 		if (pressed)
@@ -178,9 +186,8 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
-		if (isReward)
+		if (isReward || upgrading)
 		{
-
 			return;
 		}
 		if (isDragging)

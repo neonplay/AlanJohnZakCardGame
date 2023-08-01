@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CurrentRunManager : MonoBehaviour
 {
+    public static CurrentRunManager instance;
+
     public List<string> PlayerDeck;
     private AllCardsData allCardsData;
 
@@ -18,13 +20,15 @@ public class CurrentRunManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         allCardsData = FindObjectOfType<AllCardsData>();
     }
+
+    #region Card Rewards
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.O)) OfferRewards();
-        if (Input.GetKeyDown(KeyCode.R)) RemoveRewards();
     }
 
     public void OfferRewards()
@@ -75,11 +79,6 @@ public class CurrentRunManager : MonoBehaviour
         StartCoroutine(ScaleCardsUp());
     }
 
-    public void RemoveRewards()
-    {
-        
-    }
-
     public void RewardCardSelected(InGameCard card)
     {
         if (cardAccepted) return;
@@ -98,8 +97,6 @@ public class CurrentRunManager : MonoBehaviour
 
             float progress = 0;
             
-            RemoveRewards();
-
             while (progress < 1)
             {
                 progress += Time.deltaTime * 3;
@@ -126,4 +123,6 @@ public class CurrentRunManager : MonoBehaviour
         PlayerDeck.Add(card.CardName);
         StartCoroutine(LerpCardToDeck());
     }
+
+    #endregion
 }
