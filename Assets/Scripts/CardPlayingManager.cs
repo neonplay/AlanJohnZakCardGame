@@ -30,7 +30,6 @@ public class CardPlayingManager : MonoBehaviour
 
     private void Start()
     {
-        StartBattle();
     }
 
     private void Update()

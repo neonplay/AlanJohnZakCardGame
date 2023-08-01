@@ -23,4 +23,5 @@ public class CardAndUpgrade
 {
     public InGameCard Base;
     public InGameCard Upgrade;
+    public bool isRewardable;
 }
