@@ -10,6 +10,12 @@ public class CurrentRunManager : MonoBehaviour
     public List<string> PlayerDeck;
     private AllCardsData allCardsData;
 
+    [Header("Current stats")]
+    public CharacterStats Stats;
+
+    public int Mana = 20;
+    public int Gold;
+
     [Header("Rewards")]
     public GameObject cardRewardsPanel;
     public Transform rewardCardsParent;
@@ -22,6 +28,10 @@ public class CurrentRunManager : MonoBehaviour
     {
         instance = this;
         allCardsData = FindObjectOfType<AllCardsData>();
+    }
+
+    public void Heal(int amount)
+    {
     }
 
     #region Card Rewards
@@ -125,4 +135,30 @@ public class CurrentRunManager : MonoBehaviour
     }
 
     #endregion
+}
+
+public class CharacterStats
+{
+    public int MaxHealth;
+    public int CurrentHealth;
+    public int Armour;
+
+    public void Heal(int amount)
+    {
+        CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
+    }
+
+    public void TakeDamage(int amount)
+    {
+        int remainingDamage = amount;
+        if(Armour > 0)
+        {
+            remainingDamage -= Armour;
+            Armour -= amount;
+        }
+        if(remainingDamage > 0)
+        {
+            CurrentHealth = Mathf.Max(CurrentHealth - amount, 0);
+        }
+    }
 }

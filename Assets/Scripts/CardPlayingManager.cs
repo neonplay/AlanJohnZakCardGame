@@ -13,13 +13,11 @@ public class CardPlayingManager : MonoBehaviour
     public Transform drawStartPosition;
     public Transform discardPosition;
 
-    [Header("")]
-    public int Mana = 20;
     public List<string> Deck { get; set; }
     public List<string> DiscardPile { get; set; }
     public List<string> ExhuastedCards { get; set; }
 
-    public PlayerBuffsAndDebuffs BuffsAndDebuffs { get; set; } = new PlayerBuffsAndDebuffs();
+    public BuffsAndDebuffs BuffsAndDebuffs { get; set; } = new BuffsAndDebuffs();
 
     private bool replenishingDeck;
 
@@ -152,9 +150,9 @@ public class CardPlayingManager : MonoBehaviour
 
     public bool TryPlayCard(InGameCard card, float yPos)
     {
-        if(card.CurrentStats.ManaCost <= Mana && yPos >= 500)
+        if(card.CurrentStats.ManaCost <= CurrentRunManager.instance.Mana && yPos >= 500)
         {
-            Mana -= card.CurrentStats.ManaCost;
+            CurrentRunManager.instance.Mana -= card.CurrentStats.ManaCost;
 
             //do card ability
             //destroy card
@@ -171,9 +169,4 @@ public class CardPlayingManager : MonoBehaviour
             return false;
         }
     }
-}
-
-public class PlayerBuffsAndDebuffs
-{
-    public int Strength;
 }
