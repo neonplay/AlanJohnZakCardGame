@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!224 &99412489 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1489740543925511505, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
-  m_PrefabInstance: {fileID: 35289479961162661}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &267358796 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4147004509023474506, guid: 1a8b11a89f45d7f4f96834828492593d, type: 3}
@@ -212,7 +207,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1174482458}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -400,6 +395,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1425953901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1425953902}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1425953902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425953901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 392.98007, y: 709.9338, z: 90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1721447800}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1472149218 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 432432934441871937, guid: c4eedc8eaf44d3a439e1ff71bb8dfd5f, type: 3}
@@ -408,6 +435,58 @@ RectTransform:
 --- !u!224 &1627002000 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 35289479428089653, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
+  m_PrefabInstance: {fileID: 35289479961162661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1721447799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1721447800}
+  - component: {fileID: 1721447801}
+  m_Layer: 0
+  m_Name: CardPlayingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1721447800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721447799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1425953902}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1721447801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721447799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4fb49797d963645b356dcc76c42e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHandParent: {fileID: 1947562073}
+  heldCardParent: {fileID: 35289479961162662}
+  Mana: 20
+--- !u!224 &1947562073 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 306613788464964088, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
   m_PrefabInstance: {fileID: 35289479961162661}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &35289479961162661
@@ -632,7 +711,7 @@ PrefabInstance:
     - target: {fileID: 8663932981407296105, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
       propertyPath: hand
       value: 
-      objectReference: {fileID: 99412489}
+      objectReference: {fileID: 0}
     - target: {fileID: 8812538925102658245, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -651,6 +730,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
+--- !u!224 &35289479961162662 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6550862699130684227, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
+  m_PrefabInstance: {fileID: 35289479961162661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &432432933008661667
 PrefabInstance:
   m_ObjectHideFlags: 0
