@@ -23,6 +23,8 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
 	CardPlayingManager cardPlayingManager;
 
+	public bool isReward;
+
     private void Awake()
     {
 		cardPlayingManager = FindObjectOfType<CardPlayingManager>();
@@ -134,6 +136,12 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
     public void OnPointerClick(PointerEventData eventData)
     {
+		if (isReward)
+        {
+			FindObjectOfType<CurrentRunManager>().RewardCardSelected(this);
+			return;
+        }
+
 		if(pressed && !isDragging)
         {
 
@@ -142,13 +150,23 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
+		if (isReward)
+		{
+
+			return;
+		}
 		pressed = true;
 		timePressed = 0;
 	}
 
 	public void OnPointerMove(PointerEventData eventData)
     {
-		if(pressed)
+		if (isReward)
+		{
+
+			return;
+		}
+		if (pressed)
         {
 			if(!isDragging)
             {
@@ -160,6 +178,11 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
+		if (isReward)
+		{
+
+			return;
+		}
 		if (isDragging)
 		{
 			pressed = false;
