@@ -86,7 +86,7 @@ public class CardPlayingManager : MonoBehaviour
         {
             foreach(var card in cards)
             {
-                //gain mana for each card discarded
+                CurrentRunManager.instance.Mana += card.CurrentStats.ManaCost;
                 DiscardPile.Add(card.CardName);
                 card.SendToDiscard(discardPosition);
                 yield return new WaitForSeconds(0.1f);
@@ -142,7 +142,7 @@ public class CardPlayingManager : MonoBehaviour
             CurrentRunManager.instance.Mana -= card.CurrentStats.ManaCost;
 
             card.CurrentStats.DoAbility(CurrentRunManager.instance.Stats, FindObjectOfType<Enemy>().Stats);
-            card.gameObject.SetActive(true);
+            card.gameObject.SetActive(false);
             Destroy(card.gameObject, 1);
             DiscardPile.Add(card.CardName);
 

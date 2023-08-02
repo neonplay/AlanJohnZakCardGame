@@ -50,12 +50,6 @@ public class CurrentRunManager : MonoBehaviour
     }
 
     #region Card Rewards
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O)) OfferRewards();
-    }
-
     public void OfferRewards()
     {
         cardRewardsPanel.SetActive(true);
@@ -150,50 +144,4 @@ public class CurrentRunManager : MonoBehaviour
     }
 
     #endregion
-}
-
-[Serializable]
-public class CharacterStats
-{
-    public event Action OnHpZero;
-
-    public int MaxHealth;
-    public int CurrentHealth;
-    public int Armour;
-
-    public BuffsAndDebuffs BuffsAndDebuffs { get; set; } = new BuffsAndDebuffs();
-
-    public void Heal(int amount)
-    {
-        CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
-    }
-
-    public void GainArmour(int amount)
-    {
-        Armour += amount;
-    }
-
-    public void TakeDamage(int amount)
-    {
-        int remainingDamage = amount;
-        if(Armour > 0)
-        {
-            remainingDamage -= Armour;
-            Armour -= amount;
-        }
-        if(remainingDamage > 0)
-        {
-            CurrentHealth = Mathf.Max(CurrentHealth - amount, 0);
-        }
-
-        if(CurrentHealth <= 0)
-        {
-            OnHpZero.Invoke();
-        }
-    }
-
-    public void ApplyAndUpdateBuffsAndDebuffs()
-    {
-        
-    }
 }

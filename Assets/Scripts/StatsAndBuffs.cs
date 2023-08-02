@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class StatsAndBuffs : MonoBehaviour
 {
@@ -17,12 +18,15 @@ public class BuffsAndDebuffs
     public int LessArmour;
     public int TakeMoreDamage;
 
-    public void ReduceDebuffsAfterTurnStart()
+    public void ReduceDebuffsOnTurnStart()
     {
-        if (Dot > 0) Dot--;
+        if (TakeMoreDamage > 0) TakeMoreDamage--;
+    }
+
+    public void ReduceDebuffsAfterTurnEnd()
+    {
         if (LessDamage > 0) LessDamage--;
         if (LessArmour > 0) LessArmour--;
-        if (TakeMoreDamage > 0) TakeMoreDamage--;
     }
 
     public void ResetBuffsAndDebuffs()
@@ -115,6 +119,18 @@ public class AbilityHelperClass
             }
         }
 
+        if(DoesAbilityGainArmour)
+        {
+            if(Armour.TargetSelf)
+            {
+                userStats.GainArmour(Armour.ArmourAmount);
+            }
+            else
+            {
+                opponentStats.GainArmour(Armour.ArmourAmount);
+            }
+        }
+
         foreach (var buff in Buffs)
         {
             if (buff.TargetSelf)
@@ -197,4 +213,60 @@ public class AbilityDebuff
     public int DebuffAmount;
 }
 
+[Serializable]
+public class CharacterStats
+{
+    public event Action OnHpZero;
+    public static event Action<int, bool> DamageTaken;
 
+    public bool Player;
+    public int MaxHealth;
+    public int CurrentHealth;
+    public int Armour;
+
+    public BuffsAndDebuffs BuffsAndDebuffs { get; set; } = new BuffsAndDebuffs();
+
+    public void Heal(int amount)
+    {
+        CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
+    }
+
+    public void GainArmour(int amount)
+    {
+        Armour += amount;
+    }
+
+    public void TakeDamage(int amount, bool dot = false)
+    {
+        int remainingDamage = amount;
+
+        if (!dot)
+        {
+            if (Armour > 0)
+            {
+                remainingDamage -= Armour;
+                Armour -= amount;
+            }
+        }
+
+        if (remainingDamage > 0)
+        {
+            CurrentHealth = Mathf.Max(CurrentHealth - amount, 0);
+            DamageTaken?.Invoke(remainingDamage, Player);
+        }
+
+        if (CurrentHealth <= 0)
+        {
+            OnHpZero.Invoke();
+        }
+    }
+
+    public void ApplyDotDamage()
+    {
+        if (BuffsAndDebuffs.Dot > 0)
+        {
+            TakeDamage(BuffsAndDebuffs.Dot, true);
+            BuffsAndDebuffs.Dot--;
+        }
+    }
+}

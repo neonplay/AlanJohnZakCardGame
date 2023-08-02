@@ -45,14 +45,19 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
     private void Start()
 	{
+		if (CurrentStats == null)
+		{
+			CurrentStats = new AbilityHelperClass();
+			CurrentStats.Heal = new AbilityHeal();
+			CurrentStats.Damage = new AbilityDamage();
+			CurrentStats.Armour = new AbilityGainArmour();
+		}
 		rectTransform = GetComponent<RectTransform>();
 		UpdateAbility();
 	}
 
 	private void UpdateAbility()
     {
-		if (CurrentStats == null) CurrentStats = new AbilityHelperClass();
-
 		CurrentStats.DoesAbilityDoDamage = BaseStats.DoesAbilityDoDamage;
 		CurrentStats.DoesAbilityGainArmour = BaseStats.DoesAbilityGainArmour;
 		CurrentStats.DoesAbilityHeal = BaseStats.DoesAbilityHeal;

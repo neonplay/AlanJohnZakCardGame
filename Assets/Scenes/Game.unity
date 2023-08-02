@@ -189,7 +189,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1425953902}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &30802048
 MonoBehaviour:
@@ -204,15 +204,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CardsList:
-  - Base: {fileID: 2254717347056035734, guid: 462e0fd157163324d93ebe7bc5b55450, type: 3}
-    Upgrade: {fileID: 2254717347056035734, guid: eda6f6842dd80544f8780b4b6e8a1713, type: 3}
-    isRewardable: 1
+  - Base: {fileID: 5853344918567907974, guid: 095d5d00df146114bb01da4ba4610801, type: 3}
+    Upgrade: {fileID: 5853344918567907974, guid: 1ea3de607a066d741a174b0c188d5502, type: 3}
+    isRewardable: 0
   - Base: {fileID: 2254717347056035734, guid: 912a6cb98cba4bb43ad07fbc8f9cfc2d, type: 3}
     Upgrade: {fileID: 2254717347056035734, guid: 4413aa9bd9f437442ac8b1e8180d7872, type: 3}
+    isRewardable: 0
+  - Base: {fileID: 8077153721829125881, guid: 7547b28143818b74cbdb358e43445f55, type: 3}
+    Upgrade: {fileID: 8077153721829125881, guid: cd0ecbab4fb94594898d427424d9d97d, type: 3}
+    isRewardable: 0
+  - Base: {fileID: 2254717347056035734, guid: 462e0fd157163324d93ebe7bc5b55450, type: 3}
+    Upgrade: {fileID: 2254717347056035734, guid: eda6f6842dd80544f8780b4b6e8a1713, type: 3}
     isRewardable: 1
   - Base: {fileID: 2254717347056035734, guid: 791c75ce2de276445b4e7be2b4554813, type: 3}
     Upgrade: {fileID: 2254717347056035734, guid: b0f454f9508b2e1489279581fca21443, type: 3}
     isRewardable: 1
+  - Base: {fileID: 1040813873104405930, guid: 15cb92e1880172741b1e17d1e91c12d8, type: 3}
+    Upgrade: {fileID: 1040813873104405930, guid: de15fba263ffec746b6538fa2abe74d0, type: 3}
+    isRewardable: 1
+  - Base: {fileID: 7265797378268392336, guid: 69ddfe21795797e47aa6b0e59bce6d10, type: 3}
+    Upgrade: {fileID: 7265797378268392336, guid: c7cf6b5fbd7a32f42a40a8a48f52ba00, type: 3}
+    isRewardable: 1
+  - Base: {fileID: 2633594679152882993, guid: db335ba9df6066b46a49feded9563100, type: 3}
+    Upgrade: {fileID: 2633594679152882993, guid: 07e4732ce9428fb4d8e4b088bc3b9b23, type: 3}
+    isRewardable: 1
+--- !u!224 &186288569 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8878727706898273098, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
+  m_PrefabInstance: {fileID: 35289479961162661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &186288570 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1181712425110213977, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
+  m_PrefabInstance: {fileID: 35289479961162661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &237333956
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +421,9 @@ MonoBehaviour:
   dummyEnemy: {fileID: 2950158885269002940, guid: cd9967ed9a8f4ea46800ac46b12eb5f8, type: 3}
   endTurnButton: {fileID: 4147004509214081287}
   victoryScreen: {fileID: 1577826280}
+  damageNumber: {fileID: 5290945798316798744, guid: 2822f2c4df242464e95e883a4fd788d3, type: 3}
+  damageHolder: {fileID: 186288570}
+  playerDamagePosition: {fileID: 186288569}
 --- !u!224 &267358796 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4147004509023474506, guid: 1a8b11a89f45d7f4f96834828492593d, type: 3}
@@ -528,7 +556,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 259522607}
         m_TargetAssemblyTypeName: CombatManager, Assembly-CSharp
-        m_MethodName: EndTurnPressed
+        m_MethodName: VictoryNextPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1614,7 +1642,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1425953902}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &929095432
 MonoBehaviour:
@@ -1629,16 +1657,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerDeck:
-  - bolt
-  - bolt
-  - bolt
-  - fire
-  - fire
-  - fire
-  - ice
-  - ice
-  - ice
+  - Book Bash
+  - Book Bash
+  - Book Bash
+  - Mana Battery
+  - Mana Barrier
+  - Mana Barrier
+  - Mana Barrier
+  - Scorch
+  - Zap
   Stats:
+    Player: 0
     MaxHealth: 50
     CurrentHealth: 50
     Armour: 0
@@ -2091,7 +2120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1316537245
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2543,9 +2572,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1721447800}
   - {fileID: 30802047}
   - {fileID: 929095431}
+  - {fileID: 1721447800}
   - {fileID: 1082924407}
   - {fileID: 259522606}
   m_Father: {fileID: 0}
@@ -2919,7 +2948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1667173421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3105,7 +3134,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1425953902}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1721447801
 MonoBehaviour:

@@ -33,7 +33,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: CardName
-      value: mana barrier
+      value: Mana Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
+      propertyPath: isUpgraded
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: BaseDescription
@@ -137,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7288277619894779653, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: m_text
-      value: Gain 5 armour
+      value: Gain 5 Armour
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}

@@ -45,6 +45,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
+      propertyPath: BaseStats.DoesAbilityDoDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: BaseStats.Damage.NumTimesToHit
       value: 1
       objectReference: {fileID: 0}

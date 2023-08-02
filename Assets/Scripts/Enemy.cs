@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
 
     public void DoAbility()
     {
+        Debug.LogError("doing ability");
         NextAbility.DoAbility(Stats, CurrentRunManager.instance.Stats);
     }
 }

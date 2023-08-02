@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2837539094066234923, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: m_Name
-      value: Card_BookBash 1
+      value: Card_BookBash+
       objectReference: {fileID: 0}
     - target: {fileID: 4336258368738289495, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: m_Sprite
@@ -38,6 +38,10 @@ PrefabInstance:
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: BaseStats.Damage.DamageAmount
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
+      propertyPath: BaseStats.DoesAbilityDoDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: BaseStats.Damage.NumTimesToHit

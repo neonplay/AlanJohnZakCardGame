@@ -126,23 +126,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5346729f3d6d66a4abd2b53e8dc92e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stats:
+    MaxHealth: 15
+    CurrentHealth: 15
+    Armour: 0
   AllAbilities:
-  - DoesAbilityHeal: 0
-    Heal:
-      TargetSelf: 0
-      HealAmount: 0
-    DoesAbilityDoDamage: 0
-    Damage:
-      TargetSelf: 0
-      DamageAmount: 0
-      NumTimesToHit: 0
-    Buffs: []
-    Debuffs: []
-  NextAbility:
+  - AbilityName: 
+    ManaCost: 0
     DoesAbilityHeal: 0
     Heal:
-      TargetSelf: 1
+      TargetSelf: 0
       HealAmount: 0
+    DoesAbilityGainArmour: 0
+    Armour:
+      TargetSelf: 1
+      ArmourAmount: 0
     DoesAbilityDoDamage: 0
     Damage:
       TargetSelf: 0

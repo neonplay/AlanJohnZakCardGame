@@ -24,6 +24,10 @@ PrefabInstance:
       value: Pyroclasm+
       objectReference: {fileID: 0}
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
+      propertyPath: isUpgraded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: BaseDescription
       value: Deal {0} Damage to an enemy, apply 5 Burn and instantly activate their
         Burn damage.
@@ -43,6 +47,10 @@ PrefabInstance:
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: BaseStats.Damage.DamageAmount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
+      propertyPath: BaseStats.DoesAbilityDoDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: BaseStats.Damage.NumTimesToHit

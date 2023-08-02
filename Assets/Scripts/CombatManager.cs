@@ -19,6 +19,11 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private Button endTurnButton;
     [SerializeField] private GameObject victoryScreen;
 
+    [Header("damage numbers")]
+    [SerializeField] private GameObject damageNumber;
+    [SerializeField] private Transform damageHolder;
+    [SerializeField] private Transform playerDamagePosition;
+
     bool combatOver;
 
     private void Awake()
@@ -26,6 +31,32 @@ public class CombatManager : MonoBehaviour
         cardPlayingManager = FindObjectOfType<CardPlayingManager>();
         endTurnButton.gameObject.SetActive(false);
 
+        CharacterStats.DamageTaken += ShowDamageNumber;
+    }
+
+    private void ShowDamageNumber(int damage, bool player)
+    {
+        var dmg = Instantiate(damageNumber, damageHolder);
+        dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = (-damage).ToString();
+
+        if(!player)
+        {
+            dmg.transform.position = enemyHolder.position;
+            dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-100, 100), Random.Range(-100, 100));
+        }
+        else
+        {
+            dmg.transform.position = playerDamagePosition.position;
+            dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-25, 25), Random.Range(-25, 25));
+        }
+
+        StartCoroutine(DeleteDmgNumber());
+
+        IEnumerator DeleteDmgNumber()
+        {
+            yield return new WaitForSeconds(2.5f);
+            Destroy(dmg);
+        }
     }
 
     private void Update()
@@ -59,11 +90,15 @@ public class CombatManager : MonoBehaviour
         if(!PlayerTurn)
         {
             StartCoroutine(DoEnemyTurn());
+            CurrentRunManager.instance.Stats.BuffsAndDebuffs.ReduceDebuffsAfterTurnEnd();
+            currentEnemy.Stats.BuffsAndDebuffs.ReduceDebuffsOnTurnStart();
         }
         else
         {
             cardPlayingManager.DrawCards();
             StartCoroutine(EnableEndturnButton());
+            currentEnemy.Stats.BuffsAndDebuffs.ReduceDebuffsAfterTurnEnd();
+            CurrentRunManager.instance.Stats.BuffsAndDebuffs.ReduceDebuffsOnTurnStart();
         }
 
         Turn++;
@@ -77,7 +112,11 @@ public class CombatManager : MonoBehaviour
 
     private IEnumerator DoEnemyTurn()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
+
+        currentEnemy.Stats.ApplyDotDamage();
+
+        yield return new WaitForSeconds(1);
 
         currentEnemy.DoAbility();
 
@@ -91,12 +130,20 @@ public class CombatManager : MonoBehaviour
     public void PlayerHpReachedZero()
     {
         combatOver = true;
+        StopAllCoroutines();
     }
 
     public void EnemyHpHitZero()
     {
         combatOver = true;
         victoryScreen.SetActive(true);
+        StopAllCoroutines();
+    }
+
+    public void VictoryNextPressed()
+    {
+        victoryScreen.SetActive(false);
+        CurrentRunManager.instance.OfferRewards();
     }
 
     public void CloseCombatScreen()

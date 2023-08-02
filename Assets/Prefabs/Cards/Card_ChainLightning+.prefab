@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: BaseStats.Damage.DamageAmount
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
+      propertyPath: BaseStats.DoesAbilityDoDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5308359742366318093, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
