@@ -114,9 +114,25 @@ public class AbilityHelperClass
                 }
                 else
                 {
-                    opponentStats.TakeDamage(Damage.DamageAmount, false, i * 0.5f);
+                    opponentStats.TakeDamage(GetAdjustedDamage(Damage.DamageAmount), false, i * 0.5f);
                 }
             }
+        }
+
+        int GetAdjustedDamage(int damage)
+        {
+            if (AbilityName.Contains("Gigavolt"))
+            {
+                if (opponentStats.BuffsAndDebuffs.LessDamage > 0)
+                    return damage * 2;
+
+                else return damage;
+            }
+
+            if (userStats.BuffsAndDebuffs.LessDamage > 0) damage = Mathf.RoundToInt(damage * 0.75f);
+            if (opponentStats.BuffsAndDebuffs.TakeMoreDamage > 0) damage = Mathf.RoundToInt(damage * 1.5f);
+
+            return damage;
         }
 
         if(DoesAbilityGainArmour)
@@ -153,6 +169,23 @@ public class AbilityHelperClass
             else
             {
                 opponentStats.BuffsAndDebuffs.ApplyDebuff(debuff.DebuffType, debuff.DebuffAmount);
+            }
+        }
+
+        //bonus damages
+        if (AbilityName.Contains("Chain Lightning"))
+        {
+            if(opponentStats.BuffsAndDebuffs.LessDamage > 0)
+            {
+                opponentStats.TakeDamage(2 * opponentStats.BuffsAndDebuffs.LessDamage, false, 0.5f);
+            }
+        }
+
+        if (AbilityName.Contains("Pyroclasm"))
+        {
+            if (opponentStats.BuffsAndDebuffs.Dot > 0)
+            {
+                opponentStats.TakeDamage(opponentStats.BuffsAndDebuffs.Dot, false, 0.5f);
             }
         }
     }

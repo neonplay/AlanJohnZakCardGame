@@ -147,10 +147,13 @@ MonoBehaviour:
     DoesAbilityDoDamage: 1
     Damage:
       TargetSelf: 0
-      DamageAmount: 4
+      DamageAmount: 2
       NumTimesToHit: 1
     Buffs: []
-    Debuffs: []
+    Debuffs:
+    - TargetSelf: 0
+      DebuffType: 3
+      DebuffAmount: 2
   - AbilityName: Double Peck
     ManaCost: 0
     DoesAbilityHeal: 0
