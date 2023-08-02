@@ -217,18 +217,28 @@ public class AbilityDebuff
 public class CharacterStats
 {
     public event Action OnHpZero;
-    public static event Action<int, bool> DamageTaken;
+    public static event Action<int, bool, bool> HpChanged;
 
     public bool Player;
+    public int MaxMana = 20;
+    public int Mana = 20;
     public int MaxHealth;
     public int CurrentHealth;
     public int Armour;
 
     public BuffsAndDebuffs BuffsAndDebuffs { get; set; } = new BuffsAndDebuffs();
 
+    public void ChangeMana(int amount)
+    {
+        Mana += amount;
+        if (Mana < 0) Mana = 0;
+        if (Mana > MaxMana) Mana = MaxMana;
+    }
+
     public void Heal(int amount)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
+        HpChanged?.Invoke(amount, Player, false);
     }
 
     public void GainArmour(int amount)
@@ -252,7 +262,7 @@ public class CharacterStats
         if (remainingDamage > 0)
         {
             CurrentHealth = Mathf.Max(CurrentHealth - amount, 0);
-            DamageTaken?.Invoke(remainingDamage, Player);
+            HpChanged?.Invoke(remainingDamage, Player, true);
         }
 
         if (CurrentHealth <= 0)

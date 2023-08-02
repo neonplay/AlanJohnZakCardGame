@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
-using Random = UnityEngine.Random;
+using TMPro;
 
 public class CurrentRunManager : MonoBehaviour
 {
@@ -14,9 +13,13 @@ public class CurrentRunManager : MonoBehaviour
 
     [Header("Current stats")]
     public CharacterStats Stats;
-
-    public int Mana = 20;
     public int Gold;
+
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI HpText;
+    [SerializeField] private TextMeshProUGUI ManaText;
+    [SerializeField] private Image hpBar;
+    [SerializeField] private Image manaBar;
 
     [SerializeField] private GameObject gameOverScreen;
 
@@ -36,7 +39,9 @@ public class CurrentRunManager : MonoBehaviour
 
     private void Start()
     {
+        UpdateHealthAndMana();
         Stats.OnHpZero += HpHitZero;
+        CharacterStats.HpChanged += (int x, bool ignore, bool ignore2) => { UpdateHealthAndMana(); };
     }
 
     private void HpHitZero()
@@ -45,9 +50,15 @@ public class CurrentRunManager : MonoBehaviour
         gameOverScreen.SetActive(true);
     }
 
-    public void Heal(int amount)
+    public void UpdateHealthAndMana()
     {
+        HpText.text = Stats.CurrentHealth + "/" + Stats.MaxHealth + "HP";
+        ManaText.text = Stats.Mana + "/" + Stats.MaxMana + "MP";
+
+        hpBar.fillAmount = (float)Stats.CurrentHealth / (float)Stats.MaxHealth;
+        manaBar.fillAmount = (float)Stats.Mana / (float)Stats.MaxMana;
     }
+
 
     #region Card Rewards
     public void OfferRewards()

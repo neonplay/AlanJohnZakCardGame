@@ -19,7 +19,7 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 	protected Vector3 HandPosition;
 	protected Quaternion HandRotation;
 	protected Vector3 baseScale = new Vector3(1, 1, 1);
-	protected Vector3 enlargedScale = new Vector3(1.5f, 1.5f, 1);
+	protected Vector3 enlargedScale = new Vector3(2, 2, 1);
 
 	bool pressed;
 	bool isDragging;
@@ -113,7 +113,7 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 			if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform.parent as RectTransform, mousePos, null, out Vector2 localMousePos))
 			{
 				// Update the UI element's position to follow the mouse
-				rectTransform.localPosition = localMousePos;
+				rectTransform.localPosition = localMousePos + new Vector2(0, 200);
 				transform.eulerAngles = Vector3.zero;
 			}
 
@@ -161,7 +161,7 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
 		while (elapsedTime < duration)
 		{
-			elapsedTime += Time.deltaTime;
+			elapsedTime += Time.deltaTime * 2;
 			float t = Mathf.Clamp01(elapsedTime / duration);
 			transform.localPosition = Vector3.Lerp(startPos, targetPos, t);
 			transform.localRotation = Quaternion.Lerp(transform.localRotation, HandRotation, t);
@@ -209,6 +209,8 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 		if (combatManager.PlayerTurn == false) return;
 
 		pressed = true;
+		cardPlayingManager.CardSelectedFromHand(this);
+		isDragging = true;
 		timePressed = 0;
 	}
 
@@ -222,10 +224,6 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
 		if (pressed)
         {
-			if(!isDragging)
-            {
-				cardPlayingManager.CardSelectedFromHand(this);
-            }
 			isDragging = true;
 		}
     }

@@ -76,7 +76,7 @@ public class CardPlayingManager : MonoBehaviour
             HandSorter.UpdateHandPositionsAndRotations(playerHandParent);
             Deck.RemoveAt(0);
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.15f);
         }
     }
 
@@ -86,7 +86,8 @@ public class CardPlayingManager : MonoBehaviour
         {
             foreach(var card in cards)
             {
-                CurrentRunManager.instance.Mana += card.CurrentStats.ManaCost;
+                CurrentRunManager.instance.Stats.ChangeMana(card.CurrentStats.ManaCost);
+                CurrentRunManager.instance.UpdateHealthAndMana();
                 DiscardPile.Add(card.CardName);
                 card.SendToDiscard(discardPosition);
                 yield return new WaitForSeconds(0.1f);
@@ -137,9 +138,11 @@ public class CardPlayingManager : MonoBehaviour
 
     public bool TryPlayCard(InGameCard card, float yPos)
     {
-        if(card.CurrentStats.ManaCost <= CurrentRunManager.instance.Mana && yPos >= 500)
+        if(card.CurrentStats.ManaCost <= CurrentRunManager.instance.Stats.Mana && yPos >= 500)
         {
-            CurrentRunManager.instance.Mana -= card.CurrentStats.ManaCost;
+            CurrentRunManager.instance.Stats.ChangeMana(-card.CurrentStats.ManaCost);
+
+            CurrentRunManager.instance.UpdateHealthAndMana();
 
             card.CurrentStats.DoAbility(CurrentRunManager.instance.Stats, FindObjectOfType<Enemy>().Stats);
             card.gameObject.SetActive(false);

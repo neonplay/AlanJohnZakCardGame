@@ -127,11 +127,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats:
+    Player: 0
     MaxHealth: 15
     CurrentHealth: 15
     Armour: 0
   AllAbilities:
-  - AbilityName: 
+  - AbilityName: Chomp! Chomp! Chomp!
     ManaCost: 0
     DoesAbilityHeal: 0
     Heal:
@@ -141,10 +142,47 @@ MonoBehaviour:
     Armour:
       TargetSelf: 1
       ArmourAmount: 0
-    DoesAbilityDoDamage: 0
+    DoesAbilityDoDamage: 1
     Damage:
       TargetSelf: 0
-      DamageAmount: 0
-      NumTimesToHit: 0
+      DamageAmount: 2
+      NumTimesToHit: 3
+    Buffs: []
+    Debuffs: []
+  - AbilityName: Tear Flesh
+    ManaCost: 0
+    DoesAbilityHeal: 0
+    Heal:
+      TargetSelf: 0
+      HealAmount: 0
+    DoesAbilityGainArmour: 0
+    Armour:
+      TargetSelf: 1
+      ArmourAmount: 0
+    DoesAbilityDoDamage: 1
+    Damage:
+      TargetSelf: 0
+      DamageAmount: 2
+      NumTimesToHit: 1
+    Buffs: []
+    Debuffs:
+    - TargetSelf: 0
+      DebuffType: 0
+      DebuffAmount: 2
+  - AbilityName: Nibble
+    ManaCost: 0
+    DoesAbilityHeal: 1
+    Heal:
+      TargetSelf: 1
+      HealAmount: 4
+    DoesAbilityGainArmour: 0
+    Armour:
+      TargetSelf: 1
+      ArmourAmount: 0
+    DoesAbilityDoDamage: 1
+    Damage:
+      TargetSelf: 0
+      DamageAmount: 2
+      NumTimesToHit: 1
     Buffs: []
     Debuffs: []

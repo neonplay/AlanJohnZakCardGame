@@ -31,18 +31,28 @@ public class CombatManager : MonoBehaviour
         cardPlayingManager = FindObjectOfType<CardPlayingManager>();
         endTurnButton.gameObject.SetActive(false);
 
-        CharacterStats.DamageTaken += ShowDamageNumber;
+        CharacterStats.HpChanged += ShowHpChangedNumber;
     }
 
-    private void ShowDamageNumber(int damage, bool player)
+    private void ShowHpChangedNumber(int hpChange, bool player, bool damage)
     {
         var dmg = Instantiate(damageNumber, damageHolder);
-        dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = (-damage).ToString();
 
-        if(!player)
+        if (damage)
+        {
+            dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = (-hpChange).ToString();
+            dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().color = Color.red;
+        }
+        else
+        {
+            dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = hpChange.ToString();
+            dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().color = Color.green;
+        }
+
+        if (!player)
         {
             dmg.transform.position = enemyHolder.position;
-            dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-100, 100), Random.Range(-100, 100));
+            dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-200, 200), Random.Range(-200, 200));
         }
         else
         {
@@ -66,6 +76,7 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat(GameObject enemy)
     {
+        CurrentRunManager.instance.UpdateHealthAndMana();
         endTurnButton.gameObject.SetActive(true);
         Turn = 0;
         PlayerTurn = true;
