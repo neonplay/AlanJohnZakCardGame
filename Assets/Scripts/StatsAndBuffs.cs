@@ -110,11 +110,11 @@ public class AbilityHelperClass
             {
                 if (Damage.TargetSelf)
                 {
-                    userStats.TakeDamage(Damage.DamageAmount);
+                    userStats.TakeDamage(Damage.DamageAmount, false, i * 0.5f);
                 }
                 else
                 {
-                    opponentStats.TakeDamage(Damage.DamageAmount);
+                    opponentStats.TakeDamage(Damage.DamageAmount, false, i * 0.5f);
                 }
             }
         }
@@ -217,7 +217,7 @@ public class AbilityDebuff
 public class CharacterStats
 {
     public event Action OnHpZero;
-    public static event Action<int, bool, bool> HpChanged;
+    public static event Action<int, bool, bool, float> HpChanged;
 
     public bool Player;
     public int MaxMana = 20;
@@ -238,7 +238,7 @@ public class CharacterStats
     public void Heal(int amount)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
-        HpChanged?.Invoke(amount, Player, false);
+        HpChanged?.Invoke(amount, Player, false, 0);
     }
 
     public void GainArmour(int amount)
@@ -246,7 +246,7 @@ public class CharacterStats
         Armour += amount;
     }
 
-    public void TakeDamage(int amount, bool dot = false)
+    public void TakeDamage(int amount, bool dot = false, float showDamageDelay = 0)
     {
         int remainingDamage = amount;
 
@@ -262,7 +262,9 @@ public class CharacterStats
         if (remainingDamage > 0)
         {
             CurrentHealth = Mathf.Max(CurrentHealth - amount, 0);
-            HpChanged?.Invoke(remainingDamage, Player, true);
+
+            HpChanged?.Invoke(remainingDamage, Player, true, showDamageDelay);
+
         }
 
         if (CurrentHealth <= 0)

@@ -184,7 +184,7 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
     {
 		if (isReward)
         {
-			FindObjectOfType<CurrentRunManager>().RewardCardSelected(this);
+			FindObjectOfType<RewardsManager>().RewardCardSelected(this);
 			return;
         }
 

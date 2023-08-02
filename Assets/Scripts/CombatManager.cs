@@ -34,36 +34,36 @@ public class CombatManager : MonoBehaviour
         CharacterStats.HpChanged += ShowHpChangedNumber;
     }
 
-    private void ShowHpChangedNumber(int hpChange, bool player, bool damage)
+    private void ShowHpChangedNumber(int hpChange, bool player, bool damage, float delay)
     {
-        var dmg = Instantiate(damageNumber, damageHolder);
+        StartCoroutine(ShowNumber());
+        IEnumerator ShowNumber()
+        {
+            var dmg = Instantiate(damageNumber, damageHolder);
 
-        if (damage)
-        {
-            dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = (-hpChange).ToString();
-            dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().color = Color.red;
-        }
-        else
-        {
-            dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = hpChange.ToString();
-            dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().color = Color.green;
-        }
+            yield return new WaitForSeconds(delay);
+            if (damage)
+            {
+                dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = (-hpChange).ToString();
+                dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().color = Color.red;
+            }
+            else
+            {
+                dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = hpChange.ToString();
+                dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().color = Color.green;
+            }
 
-        if (!player)
-        {
-            dmg.transform.position = enemyHolder.position;
-            dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-200, 200), Random.Range(-200, 200));
-        }
-        else
-        {
-            dmg.transform.position = playerDamagePosition.position;
-            dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-25, 25), Random.Range(-25, 25));
-        }
+            if (!player)
+            {
+                dmg.transform.position = enemyHolder.position;
+                dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-200, 200), Random.Range(-200, 200));
+            }
+            else
+            {
+                dmg.transform.position = playerDamagePosition.position;
+                dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-25, 25), Random.Range(-25, 25));
+            }
 
-        StartCoroutine(DeleteDmgNumber());
-
-        IEnumerator DeleteDmgNumber()
-        {
             yield return new WaitForSeconds(2.5f);
             Destroy(dmg);
         }
@@ -154,7 +154,7 @@ public class CombatManager : MonoBehaviour
     public void VictoryNextPressed()
     {
         victoryScreen.SetActive(false);
-        CurrentRunManager.instance.OfferRewards();
+        FindObjectOfType<RewardsManager>().OfferRewards();
     }
 
     public void CloseCombatScreen()
