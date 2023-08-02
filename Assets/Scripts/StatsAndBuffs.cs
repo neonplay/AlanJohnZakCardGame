@@ -250,6 +250,7 @@ public class AbilityDebuff
 public class CharacterStats
 {
     public event Action OnHpZero;
+    public event Action OnArmourChanged;
     public static event Action<int, bool, bool, float> HpChanged;
 
     public bool Player;
@@ -277,6 +278,8 @@ public class CharacterStats
     public void GainArmour(int amount)
     {
         Armour += amount;
+        if (Armour < 0) Armour = 0;
+        OnArmourChanged?.Invoke();
     }
 
     public void TakeDamage(int amount, bool dot = false, float showDamageDelay = 0)

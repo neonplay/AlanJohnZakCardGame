@@ -150,6 +150,7 @@ public class CardPlayingManager : MonoBehaviour
             DiscardPile.Add(card.CardName);
 
             HandSorter.UpdateHandPositionsAndRotations(playerHandParent);
+            FindObjectOfType<CombatManager>().UpdateEnemyHpAndStatuses();
             return true;
         }
         else

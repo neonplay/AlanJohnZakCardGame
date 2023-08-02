@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CombatManager : MonoBehaviour
 {
@@ -23,6 +24,15 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject damageNumber;
     [SerializeField] private Transform damageHolder;
     [SerializeField] private Transform playerDamagePosition;
+
+    [Header("Enemy ui")]
+    [SerializeField] private TextMeshProUGUI enemyHp;
+    [SerializeField] private Image enemyHpBar;
+    [SerializeField] private TextMeshProUGUI enemyArmour;
+    [SerializeField] private GameObject enemyBurn;
+    [SerializeField] private GameObject enemyParalysis;
+    [SerializeField] private GameObject enemyPower;
+    [SerializeField] private GameObject enemyDodge;
 
     bool combatOver;
 
@@ -64,9 +74,25 @@ public class CombatManager : MonoBehaviour
                 dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-25, 25), Random.Range(-25, 25));
             }
 
+            UpdateEnemyHpAndStatuses();
+
             yield return new WaitForSeconds(2.5f);
             Destroy(dmg);
         }
+    }
+
+    public void UpdateEnemyHpAndStatuses()
+    {
+        enemyHp.text = currentEnemy.Stats.CurrentHealth + "/" + currentEnemy.Stats.MaxHealth;
+        enemyHpBar.fillAmount = (float)currentEnemy.Stats.CurrentHealth / (float)currentEnemy.Stats.MaxHealth;
+
+        enemyArmour.text = currentEnemy.Stats.Armour.ToString();
+        enemyArmour.transform.parent.gameObject.SetActive(currentEnemy.Stats.Armour > 0);
+
+        enemyBurn.SetActive(currentEnemy.Stats.BuffsAndDebuffs.Dot > 0);
+        enemyPower.SetActive(currentEnemy.Stats.BuffsAndDebuffs.Strength > 0);
+        enemyParalysis.SetActive(currentEnemy.Stats.BuffsAndDebuffs.LessDamage > 0);
+        enemyDodge.SetActive(false);
     }
 
     private void Update()
@@ -86,6 +112,7 @@ public class CombatManager : MonoBehaviour
         combatPanel.SetActive(true);
         cardPlayingManager.StartBattle();
         StartCoroutine(EnableEndturnButton());
+        UpdateEnemyHpAndStatuses();
     }
 
     public void EndTurnPressed()
@@ -103,6 +130,7 @@ public class CombatManager : MonoBehaviour
             StartCoroutine(DoEnemyTurn());
             CurrentRunManager.instance.Stats.BuffsAndDebuffs.ReduceDebuffsAfterTurnEnd();
             currentEnemy.Stats.BuffsAndDebuffs.ReduceDebuffsOnTurnStart();
+            currentEnemy.Stats.Armour = 0;
         }
         else
         {
@@ -110,7 +138,11 @@ public class CombatManager : MonoBehaviour
             StartCoroutine(EnableEndturnButton());
             currentEnemy.Stats.BuffsAndDebuffs.ReduceDebuffsAfterTurnEnd();
             CurrentRunManager.instance.Stats.BuffsAndDebuffs.ReduceDebuffsOnTurnStart();
+            CurrentRunManager.instance.Stats.Armour = 0;
         }
+
+        CurrentRunManager.instance.UpdateHealthAndMana();
+        UpdateEnemyHpAndStatuses();
 
         Turn++;
     }
@@ -131,7 +163,12 @@ public class CombatManager : MonoBehaviour
 
         currentEnemy.DoAbility();
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.1f);
+
+        UpdateEnemyHpAndStatuses();
+        CurrentRunManager.instance.UpdateHealthAndMana();
+
+        yield return new WaitForSeconds(1.5f);
 
         EndTurnPressed();
         currentEnemy.PickAbilityForNextTurn();

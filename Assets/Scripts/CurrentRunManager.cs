@@ -20,6 +20,13 @@ public class CurrentRunManager : MonoBehaviour
     [SerializeField] private Image hpBar;
     [SerializeField] private Image manaBar;
 
+    [Header("Buffs")]
+    [SerializeField] private TextMeshProUGUI armourText;
+    [SerializeField] private GameObject burn;
+    [SerializeField] private GameObject paralysis;
+    [SerializeField] private GameObject power;
+    [SerializeField] private GameObject dodge;
+
     [SerializeField] private GameObject gameOverScreen;
 
     [Header("")]
@@ -34,6 +41,7 @@ public class CurrentRunManager : MonoBehaviour
     {
         UpdateHealthAndMana();
         Stats.OnHpZero += HpHitZero;
+        Stats.OnArmourChanged += UpdateHealthAndMana;
         CharacterStats.HpChanged += (int x, bool ignore, bool ignore2, float ignore3) => { UpdateHealthAndMana(); };
     }
 
@@ -50,6 +58,14 @@ public class CurrentRunManager : MonoBehaviour
 
         hpBar.fillAmount = (float)Stats.CurrentHealth / (float)Stats.MaxHealth;
         manaBar.fillAmount = (float)Stats.Mana / (float)Stats.MaxMana;
+
+        armourText.text = Stats.Armour.ToString();
+        armourText.transform.parent.gameObject.SetActive(Stats.Armour > 0);
+
+        burn.SetActive(Stats.BuffsAndDebuffs.Dot > 0);
+        power.SetActive(Stats.BuffsAndDebuffs.Strength > 0);
+        paralysis.SetActive(Stats.BuffsAndDebuffs.LessDamage > 0);
+        dodge.SetActive(false);
     }
 
     public void ReturnToMap()
