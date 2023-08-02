@@ -13,8 +13,6 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private Transform enemyHolder;
     [SerializeField] private GameObject combatPanel;
 
-
-
     Enemy currentEnemy;
     CardPlayingManager cardPlayingManager;
 
@@ -99,6 +97,7 @@ public class CombatManager : MonoBehaviour
     public void StartCombat(GameObject enemy)
     {
         CurrentRunManager.instance.UpdateHealthAndMana();
+        CurrentRunManager.instance.CloseMap();
         endTurnButton.gameObject.SetActive(true);
         Turn = 0;
         PlayerTurn = true;
@@ -197,7 +196,6 @@ public class CombatManager : MonoBehaviour
 
         combatPanel.SetActive(false);
         Destroy(currentEnemy.gameObject);
-        currentEnemy = null;
         endTurnButton.gameObject.SetActive(false);
     }
 }

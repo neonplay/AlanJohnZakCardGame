@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CardPlayingManager : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class CardPlayingManager : MonoBehaviour
     public Transform heldCardParent;
     public Transform drawStartPosition;
     public Transform discardPosition;
+
+    [Header("Deck and discard")]
+    [SerializeField] private TextMeshProUGUI deckCount;
+    [SerializeField] private TextMeshProUGUI discardPileCount;
 
     public List<string> Deck { get; set; }
     public List<string> DiscardPile { get; set; }
@@ -27,6 +32,13 @@ public class CardPlayingManager : MonoBehaviour
 
     private void Start()
     {
+        ResetCounts();
+    }
+
+    public void ResetCounts()
+    {
+        deckCount.text = CurrentRunManager.instance.PlayerDeck.Count.ToString();
+        discardPileCount.text = "0";
     }
 
     public void StartBattle()
@@ -75,6 +87,7 @@ public class CardPlayingManager : MonoBehaviour
             card.transform.SetParent(playerHandParent);
             HandSorter.UpdateHandPositionsAndRotations(playerHandParent);
             Deck.RemoveAt(0);
+            deckCount.text = Deck.Count.ToString();
 
             yield return new WaitForSeconds(0.15f);
         }
@@ -90,6 +103,7 @@ public class CardPlayingManager : MonoBehaviour
                 CurrentRunManager.instance.UpdateHealthAndMana();
                 DiscardPile.Add(card.CardName);
                 card.SendToDiscard(discardPosition);
+                discardPileCount.text = DiscardPile.Count.ToString();
                 yield return new WaitForSeconds(0.1f);
             }
         }
@@ -109,6 +123,7 @@ public class CardPlayingManager : MonoBehaviour
         foreach(var card in DiscardPile)
         {
             Deck.Add(card);
+            deckCount.text = Deck.Count.ToString();
         }
 
         ShuffleDeck();
@@ -158,6 +173,21 @@ public class CardPlayingManager : MonoBehaviour
             card.ReturnToHand(playerHandParent);
             HandSorter.UpdateHandPositionsAndRotations(playerHandParent);
             return false;
+        }
+    }
+
+    public void CombatEnded()
+    {
+        var list = new List<Transform>();
+
+        foreach (Transform card in playerHandParent)
+        {
+            list.Add(card);
+        }
+
+        foreach(var item in list)
+        {
+            Destroy(item.gameObject);
         }
     }
 }

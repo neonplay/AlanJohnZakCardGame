@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
+    public MapPoint[] stage1;
+    public MapPoint[] stage2;
+
     [Header("Enemies")]
     public GameObject piranhas;
     public GameObject bird;
@@ -13,6 +17,11 @@ public class MapManager : MonoBehaviour
     [Header("")]
     public GameObject campSite;
 
+
+    public void MapPointPressed(MapPoint point)
+    {
+
+    }
 
     public void MapPointPressed(string type)
     {

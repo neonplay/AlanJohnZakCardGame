@@ -68,8 +68,15 @@ public class CurrentRunManager : MonoBehaviour
         dodge.SetActive(false);
     }
 
+    public void CloseMap()
+    {
+        map.SetActive(false);
+    }
+
     public void ReturnToMap()
     {
+        FindObjectOfType<CardPlayingManager>().ResetCounts();
+        FindObjectOfType<CardPlayingManager>().CombatEnded();
         FindObjectOfType<CombatManager>().CloseCombatScreen();
         map.SetActive(true);
     }
