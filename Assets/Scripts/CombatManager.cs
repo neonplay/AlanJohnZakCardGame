@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class CombatManager : MonoBehaviour
 {
@@ -27,11 +28,14 @@ public class CombatManager : MonoBehaviour
     [Header("Enemy ui")]
     [SerializeField] private TextMeshProUGUI enemyHp;
     [SerializeField] private Image enemyHpBar;
+    [SerializeField] private Image enemyHpBarSlower;
     [SerializeField] private TextMeshProUGUI enemyArmour;
     [SerializeField] private GameObject enemyBurn;
     [SerializeField] private GameObject enemyParalysis;
     [SerializeField] private GameObject enemyPower;
     [SerializeField] private GameObject enemyDodge;
+    private RectTransform enemyRect;
+    private int enemyPreviousHP;
 
     bool combatOver;
 
@@ -87,6 +91,19 @@ public class CombatManager : MonoBehaviour
 
         enemyArmour.text = currentEnemy.Stats.Armour.ToString();
         enemyArmour.transform.parent.gameObject.SetActive(currentEnemy.Stats.Armour > 0);
+        enemyHp.text = currentEnemy.Stats.CurrentHealth + "/" + currentEnemy.Stats.MaxHealth;
+        enemyHpBar.fillAmount = (float)currentEnemy.Stats.CurrentHealth / (float)currentEnemy.Stats.MaxHealth;
+        enemyHpBarSlower.DOFillAmount(((float)currentEnemy.Stats.CurrentHealth / (float)currentEnemy.Stats.MaxHealth), 0.2f);
+
+        enemyArmour.text = currentEnemy.Stats.Armour.ToString();
+        enemyArmour.transform.parent.gameObject.SetActive(currentEnemy.Stats.Armour > 0);
+        if (currentEnemy.Stats.CurrentHealth < enemyPreviousHP)
+        {
+            enemyRect.DOComplete();
+            enemyRect.DOPunchScale(Vector3.one / 2f, 0.2f);
+            enemyRect.DOShakePosition(0.3f, 30);
+        }
+        enemyPreviousHP = currentEnemy.Stats.CurrentHealth;
 
         enemyBurn.SetActive(currentEnemy.Stats.BuffsAndDebuffs.Dot > 0);
         enemyPower.SetActive(currentEnemy.Stats.BuffsAndDebuffs.Strength > 0);
@@ -104,6 +121,7 @@ public class CombatManager : MonoBehaviour
         combatOver = false;
         currentEnemy =  Instantiate(enemy, enemyHolder).GetComponent<Enemy>();
         currentEnemy.PickAbilityForNextTurn();
+        enemyRect = currentEnemy.GetComponent<RectTransform>();
         combatPanel.SetActive(true);
         cardPlayingManager.StartBattle();
         StartCoroutine(EnableEndturnButton());
@@ -159,6 +177,7 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         currentEnemy.DoAbility();
+        currentEnemy.transform.DOPunchScale(Vector3.one * 1.2f, 0.2f);
 
         yield return new WaitForSeconds(0.1f);
 
