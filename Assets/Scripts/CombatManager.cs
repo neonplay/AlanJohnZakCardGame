@@ -82,6 +82,8 @@ public class CombatManager : MonoBehaviour
 
     public void UpdateEnemyHpAndStatuses()
     {
+        if (currentEnemy == null) return;
+
         enemyHp.text = currentEnemy.Stats.CurrentHealth + "/" + currentEnemy.Stats.MaxHealth;
         enemyHpBar.fillAmount = (float)currentEnemy.Stats.CurrentHealth / (float)currentEnemy.Stats.MaxHealth;
 

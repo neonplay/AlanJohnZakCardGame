@@ -14,5 +14,6 @@ public class CampSiteManager : MonoBehaviour
         CurrentRunManager.instance.Stats.Heal(5000);
         CurrentRunManager.instance.Stats.ChangeMana(5000);
         CurrentRunManager.instance.UpdateHealthAndMana();
+        CurrentRunManager.instance.ReturnToMap();
     }
 }

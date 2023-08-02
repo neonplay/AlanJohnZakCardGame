@@ -118,6 +118,7 @@ public class UpgradesManager : MonoBehaviour
         }
         UpgradeCompleteScreen.SetActive(false);
         UpgradesPanel.SetActive(false);
+        FindObjectOfType<MapManager>().campSite.SetActive(false);
         CurrentRunManager.instance.ReturnToMap();
 
     }

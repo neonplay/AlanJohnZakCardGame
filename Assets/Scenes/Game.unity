@@ -1639,7 +1639,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 432432934441871938, guid: c4eedc8eaf44d3a439e1ff71bb8dfd5f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6313220982066036532, guid: c4eedc8eaf44d3a439e1ff71bb8dfd5f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4eedc8eaf44d3a439e1ff71bb8dfd5f, type: 3}
@@ -2599,6 +2603,10 @@ PrefabInstance:
     - target: {fileID: 9046845304450403383, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
       propertyPath: m_Name
       value: Map panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 9046845304450403383, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
