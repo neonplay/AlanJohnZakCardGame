@@ -197,6 +197,11 @@ MonoBehaviour:
   - Base: {fileID: 2633594679152882993, guid: db335ba9df6066b46a49feded9563100, type: 3}
     Upgrade: {fileID: 2633594679152882993, guid: 07e4732ce9428fb4d8e4b088bc3b9b23, type: 3}
     isRewardable: 1
+--- !u!1 &167307970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6467908190686440018, guid: 1a8b11a89f45d7f4f96834828492593d, type: 3}
+  m_PrefabInstance: {fileID: 4147004509214081286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &186288569 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8878727706898273098, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
@@ -253,7 +258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHolder: {fileID: 35289479961162665}
   combatPanel: {fileID: 35289479961162666}
-  dummyEnemy: {fileID: 2950158885269002940, guid: cd9967ed9a8f4ea46800ac46b12eb5f8, type: 3}
   endTurnButton: {fileID: 4147004509214081287}
   victoryScreen: {fileID: 1577826280}
   damageNumber: {fileID: 5290945798316798744, guid: 2822f2c4df242464e95e883a4fd788d3, type: 3}
@@ -886,6 +890,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1193452286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1193452287}
+  - component: {fileID: 1193452288}
+  m_Layer: 0
+  m_Name: MapManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1193452287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193452286}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1425953902}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1193452288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193452286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 040ce38593db6e940a1703e0309ebaff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piranhas: {fileID: 2950158885269002940, guid: cd9967ed9a8f4ea46800ac46b12eb5f8, type: 3}
+  bird: {fileID: 2950158885269002940, guid: 83b55940a9887e748941371c91acb1f3, type: 3}
+  seaMonster: {fileID: 2950158885269002940, guid: bcb4eee6cad0791498c5cfe75a338bf6, type: 3}
+  sharkBoss: {fileID: 2950158885269002940, guid: 82d361e9f03ca664782fcbf5e050e982, type: 3}
+  campSite: {fileID: 0}
 --- !u!1 &1226623851 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4656577088935600981, guid: 3b71b5b46359cd34399aafa3df34f0fd, type: 3}
@@ -969,6 +1022,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3935096564107242489, guid: 083a71c239c46ef4797495e17f885973, type: 3}
   m_PrefabInstance: {fileID: 3935096562857814117}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1365380856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365380857}
+  - component: {fileID: 1365380858}
+  m_Layer: 0
+  m_Name: CampsiteManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1365380857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365380856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1425953902}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1365380858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365380856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5dac7965848d4740b1e25ee6222d5de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1425953901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,6 +1100,8 @@ Transform:
   - {fileID: 1082924407}
   - {fileID: 259522606}
   - {fileID: 1138223881}
+  - {fileID: 1193452287}
+  - {fileID: 1365380857}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2052,11 +2151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &4147004509214081290 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6467908190686440018, guid: 1a8b11a89f45d7f4f96834828492593d, type: 3}
-  m_PrefabInstance: {fileID: 4147004509214081286}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4147004509214081291 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2947299386141765861, guid: 1a8b11a89f45d7f4f96834828492593d, type: 3}
@@ -2210,7 +2304,7 @@ PrefabInstance:
     - target: {fileID: 6936529401682949687, guid: b67e233ac87db2c49acea11db0192a9c, type: 3}
       propertyPath: dodge
       value: 
-      objectReference: {fileID: 4147004509214081290}
+      objectReference: {fileID: 167307970}
     - target: {fileID: 6936529401682949687, guid: b67e233ac87db2c49acea11db0192a9c, type: 3}
       propertyPath: hpBar
       value: 
@@ -2320,6 +2414,390 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 914929038}
     m_Modifications:
+    - target: {fileID: 1061089618933276628, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061089618933276628, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061089618933276628, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 1061089618933276628, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061089618933276628, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061089618933276628, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061089618933276628, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: camp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061089618933276628, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3347327094089966190, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3347327094089966190, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3347327094089966190, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 3347327094089966190, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3347327094089966190, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3347327094089966190, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3347327094089966190, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: skip
+      objectReference: {fileID: 0}
+    - target: {fileID: 3347327094089966190, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408935338461595975, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408935338461595975, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408935338461595975, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 3408935338461595975, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408935338461595975, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408935338461595975, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408935338461595975, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: bird
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408935338461595975, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538586446212493593, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538586446212493593, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538586446212493593, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 4538586446212493593, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538586446212493593, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538586446212493593, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538586446212493593, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: bird
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538586446212493593, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597687426419595502, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597687426419595502, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597687426419595502, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 4597687426419595502, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597687426419595502, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597687426419595502, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597687426419595502, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: seaMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597687426419595502, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459116136260603725, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459116136260603725, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459116136260603725, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 5459116136260603725, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459116136260603725, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459116136260603725, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459116136260603725, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: piranhas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459116136260603725, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229988780187316231, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229988780187316231, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229988780187316231, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 6229988780187316231, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229988780187316231, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229988780187316231, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229988780187316231, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: skip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229988780187316231, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093697347890078298, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093697347890078298, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093697347890078298, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 7093697347890078298, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093697347890078298, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093697347890078298, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093697347890078298, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: seaMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093697347890078298, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175537024380918614, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175537024380918614, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175537024380918614, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 7175537024380918614, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175537024380918614, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175537024380918614, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175537024380918614, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: sharkBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175537024380918614, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817862237805401487, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817862237805401487, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817862237805401487, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 7817862237805401487, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817862237805401487, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817862237805401487, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817862237805401487, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: camp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817862237805401487, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371156901021092497, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371156901021092497, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371156901021092497, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 8371156901021092497, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371156901021092497, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371156901021092497, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371156901021092497, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: skip
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371156901021092497, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009602362058881421, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009602362058881421, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009602362058881421, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193452288}
+    - target: {fileID: 9009602362058881421, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009602362058881421, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MapPointPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009602362058881421, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009602362058881421, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: bird
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009602362058881421, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9046845304450403380, guid: 7f739bdaa5092134bac8eab5ba81a62c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

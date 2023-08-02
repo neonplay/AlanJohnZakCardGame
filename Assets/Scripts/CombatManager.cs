@@ -12,7 +12,8 @@ public class CombatManager : MonoBehaviour
 
     [SerializeField] private Transform enemyHolder;
     [SerializeField] private GameObject combatPanel;
-    public GameObject dummyEnemy;
+
+
 
     Enemy currentEnemy;
     CardPlayingManager cardPlayingManager;
@@ -93,11 +94,6 @@ public class CombatManager : MonoBehaviour
         enemyPower.SetActive(currentEnemy.Stats.BuffsAndDebuffs.Strength > 0);
         enemyParalysis.SetActive(currentEnemy.Stats.BuffsAndDebuffs.LessDamage > 0);
         enemyDodge.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C)) StartCombat(dummyEnemy);
     }
 
     public void StartCombat(GameObject enemy)
@@ -196,6 +192,9 @@ public class CombatManager : MonoBehaviour
 
     public void CloseCombatScreen()
     {
+        CurrentRunManager.instance.Stats.BuffsAndDebuffs.ResetBuffsAndDebuffs();
+        CurrentRunManager.instance.UpdateHealthAndMana();
+
         combatPanel.SetActive(false);
         Destroy(currentEnemy.gameObject);
         currentEnemy = null;
