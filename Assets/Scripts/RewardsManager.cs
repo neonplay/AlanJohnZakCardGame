@@ -62,7 +62,7 @@ public class RewardsManager : MonoBehaviour
 
                 foreach (var card in rewards)
                 {
-                    card.transform.localScale = Vector3.Lerp(Vector3.zero, new Vector3(2, 2, 2), progress);
+                    card.transform.localScale = Vector3.Lerp(Vector3.zero, new Vector3(1.5f, 1.5f, 1.5f), progress);
                 }
             }
         }
@@ -93,11 +93,11 @@ public class RewardsManager : MonoBehaviour
                 yield return new WaitForEndOfFrame();
 
                 card.transform.position = Vector3.Lerp(startPos, endPos, progress);
-                card.transform.localScale = Vector3.Lerp(new Vector3(2, 2, 2), Vector3.zero, progress);
+                card.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1.5f), Vector3.zero, progress);
 
                 foreach (var cardToDestroy in cardsToDestroy)
                 {
-                    cardToDestroy.transform.localScale = Vector3.Lerp(new Vector3(2, 2, 2), Vector3.zero, progress * 2);
+                    cardToDestroy.transform.localScale = Vector3.Lerp(new Vector3(1.5f, 1.5f, 1.5f), Vector3.zero, progress * 2);
                 }
             }
 
@@ -105,9 +105,13 @@ public class RewardsManager : MonoBehaviour
             {
                 Destroy(card.gameObject);
             }
+
             Destroy(card.gameObject);
             cardRewardsPanel.SetActive(false);
+            CurrentRunManager.instance.ReturnToMap();
+            FindObjectOfType<CombatManager>().CloseCombatScreen();
         }
+
         cardAccepted = true;
         rewardsLayoutGroup.enabled = false;
         CurrentRunManager.instance.PlayerDeck.Add(card.CardName);

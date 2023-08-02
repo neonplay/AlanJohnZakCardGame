@@ -39,9 +39,9 @@ public class CombatManager : MonoBehaviour
         StartCoroutine(ShowNumber());
         IEnumerator ShowNumber()
         {
+            yield return new WaitForSeconds(delay);
             var dmg = Instantiate(damageNumber, damageHolder);
 
-            yield return new WaitForSeconds(delay);
             if (damage)
             {
                 dmg.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = (-hpChange).ToString();
@@ -56,7 +56,7 @@ public class CombatManager : MonoBehaviour
             if (!player)
             {
                 dmg.transform.position = enemyHolder.position;
-                dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-200, 200), Random.Range(-200, 200));
+                dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-100, 100), Random.Range(-100, 100));
             }
             else
             {
