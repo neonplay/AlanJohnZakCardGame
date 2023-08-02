@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerMoveHandler, IPointerUpHandler
 {
 	public string CardName;
-	public CardStats BaseStats;
-	public CardStats CurrentStats { get; set; }
+	public AbilityHelperClass BaseStats;
+	public AbilityHelperClass CurrentStats { get; set; }
+	
+	[Header("Texts")]
+	public TextMeshProUGUI NameText;
+	public TextMeshProUGUI DescriptionText;
+	public string BaseDescription;
+	public TextMeshProUGUI ManaCostText;
 
 	protected Vector3 HandPosition;
 	protected Quaternion HandRotation;
@@ -37,16 +44,44 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
     private void Start()
 	{
 		rectTransform = GetComponent<RectTransform>();
-		UpdateCurrentStats();
+		UpdateAbility();
 	}
 
-	private void UpdateCurrentStats()
+	private void UpdateAbility()
     {
-		CurrentStats = new CardStats();
-		CurrentStats.Attack = BaseStats.Attack + cardPlayingManager.BuffsAndDebuffs.Strength;
+		if (CurrentStats == null) CurrentStats = new AbilityHelperClass();
+
+		CurrentStats.DoesAbilityDoDamage = BaseStats.DoesAbilityDoDamage;
+		CurrentStats.DoesAbilityGainArmour = BaseStats.DoesAbilityGainArmour;
+		CurrentStats.DoesAbilityHeal = BaseStats.DoesAbilityHeal;
+
+		CurrentStats.Damage.DamageAmount = BaseStats.Damage.DamageAmount + CurrentRunManager.instance.Stats.BuffsAndDebuffs.Strength;
+		CurrentStats.Damage.NumTimesToHit = BaseStats.Damage.NumTimesToHit;
+		CurrentStats.Damage.TargetSelf = BaseStats.Damage.TargetSelf;
+
+		CurrentStats.Heal.HealAmount = BaseStats.Heal.HealAmount;
+		CurrentStats.Heal.TargetSelf = BaseStats.Heal.TargetSelf;
+
+		CurrentStats.Armour.ArmourAmount = BaseStats.Armour.ArmourAmount;
+		CurrentStats.Armour.TargetSelf = BaseStats.Armour.TargetSelf;
+
+		CurrentStats.Buffs = BaseStats.Buffs;
+		CurrentStats.Debuffs = BaseStats.Debuffs;
+
+		CurrentStats.ManaCost = BaseStats.ManaCost;
+
+		DescriptionText.text = string.Format(BaseDescription, CurrentStats.Damage.DamageAmount, CurrentStats.Armour.ArmourAmount, CurrentStats.Heal.HealAmount);
 	}
 
-	private void Update()
+    private void OnValidate()
+    {
+		DescriptionText.text = string.Format(BaseDescription, BaseStats.Damage.DamageAmount, BaseStats.Armour.ArmourAmount, BaseStats.Heal.HealAmount);
+		NameText.text = BaseStats.AbilityName;
+		CardName = BaseStats.AbilityName;
+		ManaCostText.text = BaseStats.ManaCost.ToString();
+	}
+
+    private void Update()
 	{
 		if (pressed && !isDragging)
 		{

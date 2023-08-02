@@ -17,8 +17,7 @@ public class CardPlayingManager : MonoBehaviour
     public List<string> DiscardPile { get; set; }
     public List<string> ExhuastedCards { get; set; }
 
-    public BuffsAndDebuffs BuffsAndDebuffs { get; set; } = new BuffsAndDebuffs();
-
+    
     private bool replenishingDeck;
 
     private void Awake()
@@ -154,9 +153,9 @@ public class CardPlayingManager : MonoBehaviour
         {
             CurrentRunManager.instance.Mana -= card.CurrentStats.ManaCost;
 
-            //do card ability
-            //destroy card
-            Destroy(card.gameObject);
+            card.CurrentStats.DoAbility(CurrentRunManager.instance.Stats, FindObjectOfType<Enemy>().Stats);
+            card.gameObject.SetActive(true);
+            Destroy(card.gameObject, 1);
             DiscardPile.Add(card.CardName);
 
             HandSorter.UpdateHandPositionsAndRotations(playerHandParent);

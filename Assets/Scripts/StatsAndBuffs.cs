@@ -72,14 +72,75 @@ public class BuffsAndDebuffs
 public class AbilityHelperClass
 {
     public string AbilityName;
+    public int ManaCost;
+
     public bool DoesAbilityHeal;
     public AbilityHeal Heal;
+
+    public bool DoesAbilityGainArmour;
+    public AbilityGainArmour Armour;
 
     public bool DoesAbilityDoDamage;
     public AbilityDamage Damage;
 
     public AbilityBuff[] Buffs;
     public AbilityDebuff[] Debuffs;
+
+    public void DoAbility(CharacterStats userStats, CharacterStats opponentStats)
+    {
+        if (DoesAbilityHeal)
+        {
+            if (Heal.TargetSelf)
+            {
+                userStats.Heal(Heal.HealAmount);
+            }
+            else
+            {
+                opponentStats.Heal(Heal.HealAmount);
+            }
+        }
+
+        if (DoesAbilityDoDamage)
+        {
+            for (int i = 0; i < Damage.NumTimesToHit; i++)
+            {
+                if (Damage.TargetSelf)
+                {
+                    userStats.TakeDamage(Damage.DamageAmount);
+                }
+                else
+                {
+                    opponentStats.TakeDamage(Damage.DamageAmount);
+                }
+            }
+        }
+
+        foreach (var buff in Buffs)
+        {
+            if (buff.TargetSelf)
+            {
+                userStats.BuffsAndDebuffs.ApplyBuff(buff.BuffType, buff.BuffAmount);
+            }
+            else
+            {
+                opponentStats.BuffsAndDebuffs.ApplyBuff(buff.BuffType, buff.BuffAmount);
+
+            }
+        }
+
+        foreach (var debuff in Debuffs)
+        {
+            if (debuff.TargetSelf)
+            {
+                userStats.BuffsAndDebuffs.ApplyDebuff(debuff.DebuffType, debuff.DebuffAmount);
+            }
+            else
+            {
+                opponentStats.BuffsAndDebuffs.ApplyDebuff(debuff.DebuffType, debuff.DebuffAmount);
+            }
+        }
+    }
+
 }
 
 [System.Serializable]
@@ -95,6 +156,13 @@ public class AbilityDamage
     public bool TargetSelf = false;
     public int DamageAmount;
     public int NumTimesToHit;
+}
+
+[System.Serializable]
+public class AbilityGainArmour
+{
+    public bool TargetSelf = true;
+    public int ArmourAmount;
 }
 
 [System.Serializable]

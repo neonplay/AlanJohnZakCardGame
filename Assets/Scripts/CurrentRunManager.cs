@@ -143,6 +143,8 @@ public class CharacterStats
     public int CurrentHealth;
     public int Armour;
 
+    public BuffsAndDebuffs BuffsAndDebuffs { get; set; } = new BuffsAndDebuffs();
+
     public void Heal(int amount)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);

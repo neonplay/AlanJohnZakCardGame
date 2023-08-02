@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public BuffsAndDebuffs buffsAndDebuffs;
-
     public CharacterStats Stats;
 
     public AbilityHelperClass[] AllAbilities;
@@ -28,56 +26,6 @@ public class Enemy : MonoBehaviour
 
     public void DoAbility()
     {
-        if(NextAbility.DoesAbilityHeal)
-        {
-            if(NextAbility.Heal.TargetSelf)
-            {
-                Stats.Heal(NextAbility.Heal.HealAmount);
-            }
-            else
-            {
-                CurrentRunManager.instance.Stats.Heal(NextAbility.Heal.HealAmount);
-            }
-        }
-
-        if(NextAbility.DoesAbilityDoDamage)
-        {
-            for (int i = 0; i < NextAbility.Damage.NumTimesToHit; i++)
-            {
-                if (NextAbility.Damage.TargetSelf)
-                {
-                    Stats.TakeDamage(NextAbility.Damage.DamageAmount);
-                }
-                else
-                {
-                    CurrentRunManager.instance.Stats.TakeDamage(NextAbility.Damage.DamageAmount);
-                }
-            }
-        }
-
-        foreach(var buff in NextAbility.Buffs)
-        {
-            if(buff.TargetSelf)
-            {
-                buffsAndDebuffs.ApplyBuff(buff.BuffType, buff.BuffAmount);
-            }
-            else
-            {
-                FindObjectOfType<CardPlayingManager>().BuffsAndDebuffs.ApplyBuff(buff.BuffType, buff.BuffAmount);
-
-            }
-        }
-
-        foreach(var debuff in NextAbility.Debuffs)
-        {
-            if (debuff.TargetSelf)
-            {
-                buffsAndDebuffs.ApplyDebuff(debuff.DebuffType, debuff.DebuffAmount);
-            }
-            else
-            {
-                FindObjectOfType<CardPlayingManager>().BuffsAndDebuffs.ApplyDebuff(debuff.DebuffType, debuff.DebuffAmount);
-            }
-        }
+        NextAbility.DoAbility(Stats, CurrentRunManager.instance.Stats);
     }
 }
