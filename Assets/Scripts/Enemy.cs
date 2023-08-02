@@ -11,6 +11,16 @@ public class Enemy : MonoBehaviour
 
     private int previousAbilityIndex = -1;
 
+    private void Start()
+    {
+        Stats.OnHpZero += HpHitZero;
+    }
+
+    private void HpHitZero()
+    {
+        FindObjectOfType<CombatManager>().EnemyHpHitZero();
+    }
+
     //on start of combat + end of player turn call this
     public void PickAbilityForNextTurn()
     {

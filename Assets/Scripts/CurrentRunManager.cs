@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using Random = UnityEngine.Random;
 
 public class CurrentRunManager : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class CurrentRunManager : MonoBehaviour
     public int Mana = 20;
     public int Gold;
 
+    [SerializeField] private GameObject gameOverScreen;
+
     [Header("Rewards")]
     public GameObject cardRewardsPanel;
     public Transform rewardCardsParent;
@@ -28,6 +32,17 @@ public class CurrentRunManager : MonoBehaviour
     {
         instance = this;
         allCardsData = FindObjectOfType<AllCardsData>();
+    }
+
+    private void Start()
+    {
+        Stats.OnHpZero += HpHitZero;
+    }
+
+    private void HpHitZero()
+    {
+        FindObjectOfType<CombatManager>().PlayerHpReachedZero();
+        gameOverScreen.SetActive(true);
     }
 
     public void Heal(int amount)
@@ -137,8 +152,11 @@ public class CurrentRunManager : MonoBehaviour
     #endregion
 }
 
+[Serializable]
 public class CharacterStats
 {
+    public event Action OnHpZero;
+
     public int MaxHealth;
     public int CurrentHealth;
     public int Armour;
@@ -148,6 +166,11 @@ public class CharacterStats
     public void Heal(int amount)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
+    }
+
+    public void GainArmour(int amount)
+    {
+        Armour += amount;
     }
 
     public void TakeDamage(int amount)
@@ -162,5 +185,15 @@ public class CharacterStats
         {
             CurrentHealth = Mathf.Max(CurrentHealth - amount, 0);
         }
+
+        if(CurrentHealth <= 0)
+        {
+            OnHpZero.Invoke();
+        }
+    }
+
+    public void ApplyAndUpdateBuffsAndDebuffs()
+    {
+        
     }
 }

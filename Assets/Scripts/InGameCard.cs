@@ -29,6 +29,7 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 	private RectTransform rectTransform;
 
 	CardPlayingManager cardPlayingManager;
+	CombatManager combatManager;
 
 	public bool isReward { get; set; }
 
@@ -39,6 +40,7 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
     private void Awake()
     {
 		cardPlayingManager = FindObjectOfType<CardPlayingManager>();
+		combatManager = FindObjectOfType<CombatManager>();
     }
 
     private void Start()
@@ -96,7 +98,7 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
 	private void MoveCard()
     {
-		if (isDragging)
+		if (isDragging && combatManager.PlayerTurn)
 		{
 			float lerpSpeed = 20;
 
@@ -199,6 +201,8 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 		{
 			return;
 		}
+		if (combatManager.PlayerTurn == false) return;
+
 		pressed = true;
 		timePressed = 0;
 	}
@@ -209,6 +213,8 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 		{
 			return;
 		}
+		if (combatManager.PlayerTurn == false) return;
+
 		if (pressed)
         {
 			if(!isDragging)
@@ -225,6 +231,8 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 		{
 			return;
 		}
+		if (combatManager.PlayerTurn == false) return;
+
 		if (isDragging)
 		{
 			pressed = false;

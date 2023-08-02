@@ -29,19 +29,6 @@ public class CardPlayingManager : MonoBehaviour
     {
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            DrawCards();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            EndTurn();
-        }
-    }
-
     public void StartBattle()
     {
         DiscardPile = new List<string>();
@@ -99,6 +86,7 @@ public class CardPlayingManager : MonoBehaviour
         {
             foreach(var card in cards)
             {
+                //gain mana for each card discarded
                 DiscardPile.Add(card.CardName);
                 card.SendToDiscard(discardPosition);
                 yield return new WaitForSeconds(0.1f);
