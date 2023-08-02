@@ -76,6 +76,7 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 		CurrentStats.Debuffs = BaseStats.Debuffs;
 
 		CurrentStats.ManaCost = BaseStats.ManaCost;
+		CurrentStats.AbilityName = BaseStats.AbilityName;
 
 		DescriptionText.text = string.Format(BaseDescription, CurrentStats.Damage.DamageAmount, CurrentStats.Armour.ArmourAmount, CurrentStats.Heal.HealAmount);
 	}

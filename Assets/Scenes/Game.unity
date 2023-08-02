@@ -279,6 +279,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4656577087688638102, guid: 3b71b5b46359cd34399aafa3df34f0fd, type: 3}
   m_PrefabInstance: {fileID: 4656577087977973822}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &381619559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3041526969544319562, guid: 890e6ac707bab6f489658ebb90575866, type: 3}
+  m_PrefabInstance: {fileID: 3041526969821653045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &437722860 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3935096562691552905, guid: 083a71c239c46ef4797495e17f885973, type: 3}
@@ -530,9 +535,9 @@ RectTransform:
   - {fileID: 1472149218}
   - {fileID: 277400192}
   - {fileID: 843178154}
-  - {fileID: 1667173421}
   - {fileID: 267358796}
   - {fileID: 1627002000}
+  - {fileID: 1667173421}
   - {fileID: 1577826281}
   - {fileID: 919916565}
   - {fileID: 669959536}
@@ -1087,7 +1092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 35289479428089653, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 35289479428089653, guid: a5009e050655ed449a9d7ad41f9c82e3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1745,7 +1750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3935096564457874504, guid: 083a71c239c46ef4797495e17f885973, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3935096564457874504, guid: 083a71c239c46ef4797495e17f885973, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1866,7 +1871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4147004509023474506, guid: 1a8b11a89f45d7f4f96834828492593d, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4147004509023474506, guid: 1a8b11a89f45d7f4f96834828492593d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2103,6 +2108,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1425953902}
     m_Modifications:
+    - target: {fileID: 6936529401682949687, guid: b67e233ac87db2c49acea11db0192a9c, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 381619559}
     - target: {fileID: 6936529401682949687, guid: b67e233ac87db2c49acea11db0192a9c, type: 3}
       propertyPath: hpBar
       value: 
