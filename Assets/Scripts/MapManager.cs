@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
-    public MapPoint[] stage1;
-    public MapPoint[] stage2;
+    public List<MapPoint> LinkedMapPoints;
 
     [Header("Enemies")]
     public GameObject piranhas;
@@ -51,4 +50,10 @@ public class MapManager : MonoBehaviour
                 break;
         }
     }
+}
+
+[System.Serializable]
+public class LinkedMapPoints
+{
+    public MapPoint[] Points;
 }

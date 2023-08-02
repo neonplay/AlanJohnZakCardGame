@@ -154,6 +154,8 @@ public class CombatManager : MonoBehaviour
 
         currentEnemy.Stats.ApplyDotDamage();
 
+        if (currentEnemy.Stats.CurrentHealth <= 0) yield break;
+
         yield return new WaitForSeconds(1);
 
         currentEnemy.DoAbility();
@@ -173,14 +175,12 @@ public class CombatManager : MonoBehaviour
     public void PlayerHpReachedZero()
     {
         combatOver = true;
-        StopAllCoroutines();
     }
 
     public void EnemyHpHitZero()
     {
         combatOver = true;
         victoryScreen.SetActive(true);
-        StopAllCoroutines();
     }
 
     public void VictoryNextPressed()
@@ -195,7 +195,8 @@ public class CombatManager : MonoBehaviour
         CurrentRunManager.instance.UpdateHealthAndMana();
 
         combatPanel.SetActive(false);
-        Destroy(currentEnemy.gameObject);
+        if(currentEnemy != null)
+            Destroy(currentEnemy.gameObject);
         endTurnButton.gameObject.SetActive(false);
     }
 }

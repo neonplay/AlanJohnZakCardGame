@@ -130,8 +130,8 @@ MonoBehaviour:
     Player: 0
     MaxMana: 20
     Mana: 20
-    MaxHealth: 15
-    CurrentHealth: 15
+    MaxHealth: 50
+    CurrentHealth: 50
     Armour: 0
   AllAbilities:
   - AbilityName: Pike and Chain
