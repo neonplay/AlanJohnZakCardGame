@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CampSiteManager : MonoBehaviour
 {
+    [SerializeField] GameObject campsiteScreen;
+
     public void UpgradePressed()
     {
         FindObjectOfType<UpgradesManager>().OpenUpgradesPanel();
@@ -14,6 +16,7 @@ public class CampSiteManager : MonoBehaviour
         CurrentRunManager.instance.Stats.Heal(5000);
         CurrentRunManager.instance.Stats.ChangeMana(5000);
         CurrentRunManager.instance.UpdateHealthAndMana();
-        CurrentRunManager.instance.ReturnToMap();
+        campsiteScreen.gameObject.SetActive(false);
+        //CurrentRunManager.instance.ReturnToMap();
     }
 }
