@@ -6,6 +6,11 @@ public class CampSiteManager : MonoBehaviour
 {
     [SerializeField] GameObject campsiteScreen;
 
+    private void Start()
+    {
+        Application.targetFrameRate = 120;
+    }
+
     public void UpgradePressed()
     {
         FindObjectOfType<UpgradesManager>().OpenUpgradesPanel();

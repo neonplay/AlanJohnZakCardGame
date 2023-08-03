@@ -103,8 +103,8 @@ public class UpgradesManager : MonoBehaviour
 
     public void CancelUpgradeConfirmation()
     {
-        Destroy(baseCardHolder.GetChild(0));
-        Destroy(upgradedCardHolder.GetChild(0));
+        Destroy(baseCardHolder.GetChild(0).gameObject);
+        Destroy(upgradedCardHolder.GetChild(0).gameObject);
         upgradeConfirmationScreen.SetActive(false);
         cardToUpgrade = "";
     }
