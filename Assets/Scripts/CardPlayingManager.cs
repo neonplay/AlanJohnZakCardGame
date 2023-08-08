@@ -153,7 +153,7 @@ public class CardPlayingManager : MonoBehaviour
 
     public bool TryPlayCard(InGameCard card, float yPos)
     {
-        if(card.CurrentStats.ManaCost <= CurrentRunManager.instance.Stats.Mana && yPos >= 500)
+        if(card.CurrentStats.ManaCost <= CurrentRunManager.instance.Stats.Mana && yPos >= 650)
         {
             CurrentRunManager.instance.Stats.ChangeMana(-card.CurrentStats.ManaCost);
 

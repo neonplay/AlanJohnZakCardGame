@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HandSorter : MonoBehaviour
 {
-	public static float MinSpacing = 150;
-	public static float MaxSpacing = 150;
+	public static float MinSpacing = 200;
+	public static float MaxSpacing = 200;
 	public static float minRotationAngle = -3;
 	public static float maxRotationAngle = -6f;
 	public static float MaxRaiseAmount = 15;

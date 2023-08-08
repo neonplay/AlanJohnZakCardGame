@@ -18,8 +18,8 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 
 	protected Vector3 HandPosition;
 	protected Quaternion HandRotation;
-	protected Vector3 baseScale = new Vector3(1, 1, 1);
-	protected Vector3 enlargedScale = new Vector3(2, 2, 1);
+	protected Vector3 baseScale = new Vector3(1.5f, 1.5f, 1);
+	protected Vector3 enlargedScale = new Vector3(2.5f, 2.5f, 1);
 
 	bool pressed;
 	bool isDragging;
@@ -54,6 +54,7 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 		}
 		rectTransform = GetComponent<RectTransform>();
 		UpdateAbility();
+		NameText.color = isUpgraded ? Color.green : Color.white;
 	}
 
 	private void UpdateAbility()
@@ -87,9 +88,10 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 		NameText.text = BaseStats.AbilityName;
 		CardName = BaseStats.AbilityName;
 		ManaCostText.text = BaseStats.ManaCost.ToString();
+		NameText.color = isUpgraded ? Color.green : Color.white;
 	}
 
-    private void Update()
+	private void Update()
 	{
 		if (pressed && !isDragging)
 		{
@@ -114,7 +116,7 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 			if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform.parent as RectTransform, mousePos, null, out Vector2 localMousePos))
 			{
 				// Update the UI element's position to follow the mouse
-				rectTransform.localPosition = localMousePos + new Vector2(0, 200);
+				rectTransform.localPosition = localMousePos + new Vector2(0, 400);
 				transform.eulerAngles = Vector3.zero;
 			}
 

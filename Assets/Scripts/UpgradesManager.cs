@@ -24,11 +24,6 @@ public class UpgradesManager : MonoBehaviour
         allCardsData = FindObjectOfType<AllCardsData>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.U)) OpenUpgradesPanel();
-    }
-
     public void OpenUpgradesPanel()
     {
         upgradeConfirmationScreen.SetActive(false);
@@ -44,6 +39,8 @@ public class UpgradesManager : MonoBehaviour
             if (!card.isUpgraded)
             {
                 var item = Instantiate(card, UpgradeableCardsParent);
+                item.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
+                item.transform.localScale = new Vector2(1.5f, 1.5f);
                 item.upgrading = true;
                 item.deckIndex = index;
             }
@@ -59,12 +56,15 @@ public class UpgradesManager : MonoBehaviour
 
         upgradeConfirmationScreen.SetActive(true);
         cardToUpgrade = card.CardName;
+        upgradeIndex = card.deckIndex;
     }
 
+    int upgradeIndex = -1;
     string cardToUpgrade;
 
     public void ConfirmedUpgrade()
     {
+        CurrentRunManager.instance.PlayerDeck[upgradeIndex] += "+";
         DestroyAllCards();
         ShowUpgradedCard();
     }
