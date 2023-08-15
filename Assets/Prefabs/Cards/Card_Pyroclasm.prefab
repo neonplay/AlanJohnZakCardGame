@@ -26,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: EffectToSpawn
       value: 
-      objectReference: {fileID: 3347319630938646223, guid: d1e40dc2a05912e49b8ebb28bdf11f0b, type: 3}
+      objectReference: {fileID: 3347319630938646223, guid: 8824b33c844f80d46bb3dc2955bdb86f, type: 3}
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: BaseDescription
       value: Deal {0} Damage to an enemy, apply 2 Burn and instantly activate their

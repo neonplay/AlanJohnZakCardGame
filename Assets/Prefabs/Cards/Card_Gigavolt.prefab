@@ -26,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: EffectToSpawn
       value: 
-      objectReference: {fileID: 3347319630938646223, guid: 1a536dd142c9b974083bdbb50fa6e425, type: 3}
+      objectReference: {fileID: 3347319630938646223, guid: a86379c00cd9b324da82060b48cb0662, type: 3}
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: BaseDescription
       value: Deal {0} Damage. Double if target is paralyzed.

@@ -22,6 +22,7 @@ public class MapPoint : MonoBehaviour
 
     public void MakeLinesGrey()
     {
+        return;
         foreach (var item in buttonsToDisable)
         {
             item.enabled = false;

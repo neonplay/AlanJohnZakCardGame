@@ -42,7 +42,7 @@ PrefabInstance:
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: EffectToSpawn
       value: 
-      objectReference: {fileID: 3347319630938646223, guid: 1a536dd142c9b974083bdbb50fa6e425, type: 3}
+      objectReference: {fileID: 3347319630938646223, guid: 08a141108eb14eb449688301b48b7d76, type: 3}
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: BaseDescription
       value: Deal {0} damage, and 1 damage for each stack of 'Paralysis' on the target.
