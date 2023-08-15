@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Gigavolt+
       objectReference: {fileID: 0}
+    - target: {fileID: 2602472369432150460, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602472369432150460, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2837539094066234923, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: m_Name
       value: Card_Gigavolt+
@@ -27,6 +35,10 @@ PrefabInstance:
       propertyPath: isUpgraded
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
+      propertyPath: EffectToSpawn
+      value: 
+      objectReference: {fileID: 3347319630938646223, guid: 1a536dd142c9b974083bdbb50fa6e425, type: 3}
     - target: {fileID: 4392547421896298430, guid: b2729e2ebb8db0046ae328f2fc26d37f, type: 3}
       propertyPath: BaseDescription
       value: Deal {0} Damage. Double if target is paralyzed.

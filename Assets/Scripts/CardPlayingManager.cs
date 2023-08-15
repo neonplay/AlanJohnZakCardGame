@@ -164,6 +164,11 @@ public class CardPlayingManager : MonoBehaviour
             Destroy(card.gameObject, 1);
             DiscardPile.Add(card.CardName);
 
+            if(card.EffectToSpawn != null)
+            {
+                Instantiate(card.EffectToSpawn, FindObjectOfType<CombatManager>().EnemyHolder);
+            }
+
             HandSorter.UpdateHandPositionsAndRotations(playerHandParent);
             FindObjectOfType<CombatManager>().UpdateEnemyHpAndStatuses();
             return true;

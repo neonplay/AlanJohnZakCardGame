@@ -12,6 +12,7 @@ public class CombatManager : MonoBehaviour
     public bool PlayerTurn { get; set; } = false;
 
     [SerializeField] private Transform enemyHolder;
+    public Transform EnemyHolder => enemyHolder;
     [SerializeField] private GameObject combatPanel;
 
     Enemy currentEnemy;
@@ -24,6 +25,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject damageNumber;
     [SerializeField] private Transform damageHolder;
     [SerializeField] private Transform playerDamagePosition;
+    [SerializeField] private Animation tookDamageFlash;
 
     [Header("Enemy ui")]
     [SerializeField] private TextMeshProUGUI enemyHp;
@@ -75,6 +77,11 @@ public class CombatManager : MonoBehaviour
             {
                 dmg.transform.position = playerDamagePosition.position;
                 dmg.GetComponent<RectTransform>().anchoredPosition += new Vector2(Random.Range(-25, 25), Random.Range(-25, 25));
+                if(damage)
+                {
+                    tookDamageFlash.Stop();
+                    tookDamageFlash.Play();
+                }
             }
 
             UpdateEnemyHpAndStatuses();

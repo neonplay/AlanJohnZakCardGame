@@ -37,6 +37,8 @@ public class InGameCard : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
 	public bool upgrading { get; set; }
 	public int deckIndex { get; set; }
 
+	public GameObject EffectToSpawn;
+
     private void Awake()
     {
 		cardPlayingManager = FindObjectOfType<CardPlayingManager>();
